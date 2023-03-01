@@ -39,6 +39,13 @@ interface Album {
     title: string
     tracklist: string
     type: string
+    artist: Artist 
+    contributors: Artist[]
+    release_date: string
+    fans: number
+    duration: number
+    nb_tracks: number
+    tracks: Array<Song>
 }
 
 interface Artist {
@@ -78,4 +85,18 @@ interface ArtistReducerInitialState extends DefaultReducer{
     data: Artist
     popular: Album[]
     albums: Album[]
+}
+
+interface AlbumReducerInitialState extends DefaultReducer{
+    data: Album
+    related: Album[]
+    // albums: Album[]
+}
+
+interface PlayerReducerInitialState extends DefaultReducer{
+    selected: Song
+    volume: number
+    playing: boolean
+    currentTime: number
+    // albums: Album[]
 }

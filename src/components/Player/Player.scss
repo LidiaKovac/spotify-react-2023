@@ -68,17 +68,17 @@
       }
     }
     .player__track-like {
-      i:first-of-type {
+      svg:first-of-type {
         color: white;
       }
-      i:last-of-type {
+      svg:last-of-type {
         color: $green;
       }
       &:hover {
-        i:first-of-type {
+        svg:first-of-type {
           display: none;
         }
-        i:last-of-type {
+        svg:last-of-type {
           display: block !important;
         }
       }
@@ -90,7 +90,7 @@
       .player-btn {
         background: transparent;
         border: none;
-        i {
+        svg {
           color: white;
         }
         &.play-btn {

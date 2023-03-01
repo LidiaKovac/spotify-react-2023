@@ -1,15 +1,12 @@
-import { useEffect } from "react"
-import "./App.scss"
+import "./index.scss"
 import { Homepage } from "./views/Homepage/Home"
-import { useSelector } from "react-redux"
-import { useAppDispatch } from "./app/hooks"
-import { getSongsByQuery } from "./actions/home/home"
+
 import { Row } from "react-bootstrap"
-import { Jumbotron } from "./components/Jumbotron/Jumbotron"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { SidebarLeft } from "./components/SidebarLeft/SidebarLeft"
 import { Player } from "./components/Player/Player"
 import { Artist } from "./views/Artist/Artist"
+import { AlbumPage as Album } from "./views/Album/Album"
 
 function App() {
 
@@ -21,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/artist/:id" element={<Artist />} />
+          <Route path="/album/:id" element={<Album />} />
         </Routes>
 
         <aside
