@@ -7,9 +7,28 @@ import { SidebarLeft } from "./components/SidebarLeft/SidebarLeft"
 import { Player } from "./components/Player/Player"
 import { Artist } from "./views/Artist/Artist"
 import { AlbumPage as Album } from "./views/Album/Album"
+import { ChangeEvent, FormEvent, useState } from "react"
 
 function App() {
-
+  const [fd, setFd] = useState(new FormData())
+  const handleSubmit = async (ev: FormEvent) => {
+    ev.preventDefault()
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/63ff5c39f443aa00132286d3", {
+      //qui l'id andra' sostituito con un id DINAMICO!!!!!
+      method: "POST",
+      body: fd,
+      headers: {
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU5N2ZiY2ZlYzFjZjAwMTU1YjliMDkiLCJpYXQiOjE2Nzc0ODUyNzYsImV4cCI6MTY3ODY5NDg3Nn0.zZRcvWE_qpD6Gr06xfZqQlVkqzkyl5BJI30JsV9rMqc"
+      }
+    })
+  }
+  const handleFile = (ev: ChangeEvent<HTMLInputElement>) => {
+    setFd((prev) => {
+      prev.delete("post")
+      prev.append("post", ev.target.files![0])
+      return prev
+    })
+  }
   return (
     <BrowserRouter>
       <div className="spotify__container row g-0">
@@ -19,6 +38,15 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/artist/:id" element={<Artist />} />
           <Route path="/album/:id" element={<Album />} />
+          <Route path="/test" element={<>
+
+            <form onSubmit={handleSubmit}>
+              <input type='file' onChange={handleFile} />
+              <button>SEND</button>
+            </form>
+
+          </>} />
+
         </Routes>
 
         <aside

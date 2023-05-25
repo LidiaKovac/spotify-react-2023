@@ -29,7 +29,7 @@ export const Player = () => {
     const [audio, setAudio] = useState<HTMLAudioElement>(
         new Audio(selected.preview)
     )
-    useEffect(()=> {
+    useEffect(() => {
         return clearInterval(interval)
     })
     useEffect(() => {
